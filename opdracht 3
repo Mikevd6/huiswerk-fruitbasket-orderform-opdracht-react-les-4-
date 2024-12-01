@@ -1,0 +1,26 @@
+Button Component:
+
+function Button({ onClick, children }) {
+  return <button onClick={onClick}>{children}</button>;
+}
+Counter Component:
+
+function Counter({ label, count, onIncrease, onDecrease }) {
+  return (
+    <div>
+      <h2>{label}: {count}</h2>
+      <Button onClick={onDecrease}>-</Button>
+      <Button onClick={onIncrease}>+</Button>
+    </div>
+  );
+}
+Input Component:
+
+function TextInput({ label, name, value, onChange }) {
+  return (
+    <div>
+      <label>{label}</label>
+      <input type="text" name={name} value={value} onChange={onChange} />
+    </div>
+  );
+}
