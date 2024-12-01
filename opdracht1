@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [bananas, setBananas] = useState(0);
+  const [strawberries, setStrawberries] = useState(0);
+  const [apples, setApples] = useState(0);
+  const [kiwis, setKiwis] = useState(0);
+
+  const increase = (setter, value) => setter(value + 1);
+  const decrease = (setter, value) => setter(value > 0 ? value - 1 : 0);
+
+  const resetCounters = () => {
+    setBananas(0);
+    setStrawberries(0);
+    setApples(0);
+    setKiwis(0);
+  };
+
+  return (
+    <div>
+      <h1>Fruitmand Bestelformulier</h1>
+      <div>
+        <h2>Bananen: {bananas}</h2>
+        <button onClick={() => decrease(setBananas, bananas)}>-</button>
+        <button onClick={() => increase(setBananas, bananas)}>+</button>
+      </div>
+      <div>
+        <h2>Aardbeien: {strawberries}</h2>
+        <button onClick={() => decrease(setStrawberries, strawberries)}>-</button>
+        <button onClick={() => increase(setStrawberries, strawberries)}>+</button>
+      </div>
+      <div>
+        <h2>Appels: {apples}</h2>
+        <button onClick={() => decrease(setApples, apples)}>-</button>
+        <button onClick={() => increase(setApples, apples)}>+</button>
+      </div>
+      <div>
+        <h2>Kiwi's: {kiwis}</h2>
+        <button onClick={() => decrease(setKiwis, kiwis)}>-</button>
+        <button onClick={() => increase(setKiwis, kiwis)}>+</button>
+      </div>
+      <button onClick={resetCounters}>Reset</button>
+    </div>
+  );
+}
+
+export default App;
