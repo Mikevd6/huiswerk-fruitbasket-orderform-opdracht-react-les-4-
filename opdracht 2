@@ -1,0 +1,102 @@
+function OrderForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    age: '',
+    postalCode: '',
+    deliveryFrequency: 'iedere week',
+    timeSlot: 'overdag',
+    remarks: '',
+    termsAccepted: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form Data:', formData);
+    // Log ook de fruitcounters hier
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="firstName"
+        value={formData.firstName}
+        onChange={handleChange}
+        placeholder="Voornaam"
+      />
+      <input
+        type="text"
+        name="lastName"
+        value={formData.lastName}
+        onChange={handleChange}
+        placeholder="Achternaam"
+      />
+      <input
+        type="number"
+        name="age"
+        value={formData.age}
+        onChange={handleChange}
+        placeholder="Leeftijd"
+      />
+      <input
+        type="text"
+        name="postalCode"
+        value={formData.postalCode}
+        onChange={handleChange}
+        placeholder="Postcode"
+      />
+      <select
+        name="deliveryFrequency"
+        value={formData.deliveryFrequency}
+        onChange={handleChange}
+      >
+        <option value="iedere week">Iedere week</option>
+        <option value="om de week">Om de week</option>
+        <option value="iedere maand">Iedere maand</option>
+      </select>
+      <div>
+        <input
+          type="radio"
+          name="timeSlot"
+          value="overdag"
+          checked={formData.timeSlot === 'overdag'}
+          onChange={handleChange}
+        />
+        Overdag
+        <input
+          type="radio"
+          name="timeSlot"
+          value="s avonds"
+          checked={formData.timeSlot === 's avonds'}
+          onChange={handleChange}
+        />
+        's Avonds
+      </div>
+      <textarea
+        name="remarks"
+        value={formData.remarks}
+        onChange={handleChange}
+        placeholder="Opmerkingen"
+      />
+      <div>
+        <input
+          type="checkbox"
+          name="termsAccepted"
+          checked={formData.termsAccepted}
+          onChange={handleChange}
+        />
+        Akkoord met de voorwaarden
+      </div>
+      <button type="submit">Verzend</button>
+    </form>
+  );
+}
